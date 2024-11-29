@@ -11,7 +11,7 @@ This is a library API for managing and accessing library resouce and operations 
 
 
 
-### Technologies Used
+## Technologies Used
 - **PHP**: Programming language for backend development.
 - **Slim Framework**: Lightweight PHP framework for building APIs.
 - **Firebase JWT**: Library for JSON Web Token (JWT) authentication.
@@ -43,4 +43,123 @@ This section covers the URL, description, method, body, and the sample responses
   "status": "success",
   "message": "User registered successfully"
   }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'AlexandraAri' for key 'username'"}
+  }
+  ```
+
+#### User Authenticate
+
+- **Description**: Authenticate if the user is registered and generates a single use token.
+- **URL**: `http://localhost:8080/library/public/user/authenticate`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "username":"AlexandraAri",
+  "password": "password"
+}
 ```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "token": "(generated token)"
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Authentication Failed"
+  }
+  }
+  ```
+
+#### User Update
+
+- **Description**: Ask for a token to Update the details of the user. Generates a single use token.
+- **URL**: `http://localhost:8080/library/public/user/update`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "userid":"1",
+  "username":"AlexandraAM",
+  "password":"password",
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "message": "User updated successfully.",
+  "new_token": "(generated token)"
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+
+  #### User Delete
+
+- **Description**: Ask for a token to Delete user. Generates a single use token.
+- **URL**: `http://localhost:8080/library/public/user/delete`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "userid":3,
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "userid": 3,
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+  
+
+
+
+
+
+
+
