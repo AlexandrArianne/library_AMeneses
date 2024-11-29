@@ -35,3 +35,12 @@ This section covers the URL, description, method, body, and the sample responses
   "password": "password"
 }
 ```
+
+- **Response**:
+  **Success**:
+  ```json
+  {
+  "status": "success",
+  "message": "User registered successfully"
+  }
+```
