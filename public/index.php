@@ -40,6 +40,7 @@ $app->post('/user/authenticate', function (Request $request, Response $response,
 
     $servername = "localhost";
     $username = "root";
+
     $password = "";
     $dbname = "library";
     $key = 'server_secret_key';
@@ -1196,7 +1197,7 @@ $app->post('/user/borrow', function (Request $request, Response $response, array
 
     return $response;
 });
-$app->get('/user/borrowed_returned_books', function (Request $request, Response $response, array $args) {
+$app->get('/user/bookStatus', function (Request $request, Response $response, array $args) {
     $queryParams = $request->getQueryParams();
     $token = isset($queryParams['token']) ? $queryParams['token'] : null;
 

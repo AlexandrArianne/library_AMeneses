@@ -465,6 +465,15 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
+  or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Book ID required"
+  }
+  }
+  ```
   or
   ```json
   {
@@ -551,7 +560,201 @@ This section covers the URL, description, method, body, and the sample responses
   }
   ```
 
+### Borrow and Return 
+#### User Borrow
 
+- **Description**: Ask for a token to register a user to a book they are borrowing then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/user/borrow`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "userid":1,
+  "bookid":2,
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "borrowid": "1",
+    "userid": 1,
+    "bookid": 2,
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "User ID and Book ID are required"
+  }
+  }
+  ```
+  or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+#### User Return
+
+- **Description**: Ask for a token to update that a user that has returned their borrowed book then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/user/return`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "userid":1,
+  "borrowid":5,
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "borrowid": 5,
+    "userid": 1
+  },
+    "new_token": "(generated token)"
+    }
+
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "No borrow record found for the given user ID and borrow ID"
+  }
+  }
+  ```
+or
+```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+#### Display All Books Status
+
+- **Description**: Ask for a token to update that a user that has returned their borrowed book then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/user/bookStatus?token=(generatedtoken)`
+- **Method**: ``GET`` 
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": [
+    {
+      "userid": 1,
+      "username": "AlexandraAM",
+      "borrowid": 5,
+      "title": "It Starts with Us",
+      "authorname": "Colleen Hoover",
+      "borrowed_at": "2024-11-29 13:35:51",
+      "returned_at": "2024-11-29 13:38:12"
+    },
+    {
+      "userid": 1,
+      "username": "AlexandraAM",
+      "borrowid": 1,
+      "title": "It Starts with Us",
+      "authorname": "Colleen Hoover",
+      "borrowed_at": "2024-11-29 13:20:18",
+      "returned_at": null
+    }
+  ],
+    "new_token": "(generated token)"
+    }
+
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "No borrowed or returned books found"
+  }
+  }
+  ```
+or
+```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
