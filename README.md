@@ -26,8 +26,8 @@ This section covers the URL, description, method, body, and the sample responses
 #### User Register
 
 - **Description**: Registers the user
-- **URL**: ==http://localhost:8080/library/public/user/register==
-- **Method**: ==POST==
+- **URL**: `http://localhost:8080/library/public/user/register`
+- **Method**: ``POST``
 - **Body**:
 ```json
 {
