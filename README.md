@@ -655,7 +655,7 @@ This section covers the URL, description, method, body, and the sample responses
   }
   ```
 or
-```json
+  ```json
   {
   "status": "fail",
   "data": {
@@ -719,7 +719,7 @@ or
   }
   ```
 or
-```json
+  ```json
   {
   "status": "fail",
   "data": {
