@@ -120,6 +120,7 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
+
   or 
 
   ```json
@@ -166,7 +167,9 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
-  or 
+
+   or 
+
   ```json
   {
   "status": "fail",
@@ -213,7 +216,7 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
-  or 
+   or 
   ```json
   {
   "status": "fail",
@@ -222,6 +225,158 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
+
+#### Update Author
+
+- **Description**: Ask for a token to Update Author then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/author/update`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "authorid": 3,
+  "authorname":"Colleen Hoover",
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "authorid": 3,
+    "authorname": "Colleen Hoover",
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+#### Delete Author
+
+- **Description**: Ask for a token to Update Author then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/author/delete`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "authorid": 2,
+  "token": "(generated token)"
+}
+
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "authorid": 2,
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+#### Display Authors Books
+
+- **Description**: Ask for a token to Update Author then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/author/displaybook?authorid=(pasteAuthorID)&token=(generatedtoken)`
+- **Method**: ``GET`` 
+    
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": [
+    {
+      "bookid": 1,
+      "title": "It Ends with US",
+      "authorid": 3
+    },
+    {
+      "bookid": 2,
+      "title": "It Starts with Us",
+      "authorid": 3
+    }
+    ],
+    "new_token": "(generated token)"
+    }
+  ```
+
+  - **Fail**
+
+  ```json 
+  {
+  "status": "fail",
+  "data": {
+    "title": "No books found for the given author ID"
+  }
+  }
+  ```
+  or 
+
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+  
+
+
+
 
 
 
