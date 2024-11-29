@@ -37,7 +37,7 @@ This section covers the URL, description, method, body, and the sample responses
 ```
 
 - **Response**:
-  **Success**:
+  - **Success**:
   ```json
   {
   "status": "success",
