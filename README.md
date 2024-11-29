@@ -120,8 +120,19 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
+  or 
 
-  #### User Delete
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+
+#### User Delete
 
 - **Description**: Ask for a token to Delete user. Generates a single use token.
 - **URL**: `http://localhost:8080/library/public/user/delete`
@@ -155,8 +166,62 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
-  
+  or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
 
+
+### Author
+#### Add Author
+
+- **Description**: Ask for a token to Add Author then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/author/add`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+ "authorname": "A.A. Meneses",
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "authorid": "1",
+    "authorname": "A.A. Meneses",
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+  or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
 
 
 
