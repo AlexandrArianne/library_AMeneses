@@ -274,7 +274,7 @@ This section covers the URL, description, method, body, and the sample responses
 
 #### Delete Author
 
-- **Description**: Ask for a token to Update Author then generates a single use token.
+- **Description**: Ask for a token to Delete Author then generates a single use token.
 - **URL**: `http://localhost:8080/library/public/author/delete`
 - **Method**: ``POST``
 - **Body**:
@@ -319,7 +319,7 @@ This section covers the URL, description, method, body, and the sample responses
 
 #### Display Authors Books
 
-- **Description**: Ask for a token to Update Author then generates a single use token.
+- **Description**: Ask for a token to Display Authors books then generates a single use token.
 - **URL**: `http://localhost:8080/library/public/author/displaybook?authorid=(pasteAuthorID)&token=(generatedtoken)`
 - **Method**: ``GET`` 
     
@@ -373,7 +373,186 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
-  
+
+### Books
+#### Add Book
+
+- **Description**: Ask for a token to Add Book then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/book/add`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+    "title": "It Starts with Us",
+    "authorid": 3,
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "bookid": "2",
+    "title": "It Starts with Us",
+    "authorid": 3,
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Author ID not found"
+  }
+  }
+  ```
+  or
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+#### Delete Book
+
+- **Description**: Ask for a token to Delete Book then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/book/delete`
+- **Method**: ``POST``
+- **Body**:
+```json
+{
+  "bookid": 3,
+  "token": "(generated token)"
+}
+```
+
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": {
+    "bookid": 3,
+    "new_token": "(generated token)"
+    }
+  }
+  ```
+
+  - **Fail**
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Book not found"
+  }
+  }
+  ```
+  or
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+#### Display All Books
+
+- **Description**: Ask for a token to Display Authors books then generates a single use token.
+- **URL**: `http://localhost:8080/library/public/displayAllBooks?token=(generatedtoken)`
+- **Method**: ``GET`` 
+    
+- **Response**:
+  - **Success**:
+  ```json
+  {
+  "status": "success",
+  "data": [
+    {
+      "bookid": 1,
+      "title": "It Ends with US",
+      "authorid": 3
+    },
+    {
+      "bookid": 2,
+      "title": "It Starts with Us",
+      "authorid": 3
+    },
+    {
+      "bookid": 4,
+      "title": "Until He Was Gone",
+      "authorid": 1
+    },
+    {
+      "bookid": 5,
+      "title": "Until He Returned",
+      "authorid": 1
+    }
+    ],
+    "new_token": "(generated token)"
+    }
+  ```
+
+  - **Fail**
+
+  ```json 
+  {
+  "status": "fail",
+  "data": {
+    "title": "No books found"
+  }
+  }
+  ```
+  or 
+
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Invalid or expired token"
+  }
+  }
+  ```
+   or 
+  ```json
+  {
+  "status": "fail",
+  "data": {
+    "title": "Token already used or invalid"
+  }
+  }
+  ```
+
+
+
 
 
 
