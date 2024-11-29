@@ -654,7 +654,7 @@ This section covers the URL, description, method, body, and the sample responses
   }
   }
   ```
-or
+  or
   ```json
   {
   "status": "fail",
@@ -664,6 +664,7 @@ or
   }
   ```
    or 
+
   ```json
   {
   "status": "fail",
@@ -718,7 +719,7 @@ or
   }
   }
   ```
-or
+  or
   ```json
   {
   "status": "fail",
