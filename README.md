@@ -9,7 +9,7 @@ This is a library API for managing and accessing library resouce and operations 
 - **Authors Management**: Manage author details (Add, Update and Delete) and display associated works.
 - **Borrower Management**: Track borrowers and the books they borrowed and if the books are returned.
 
----
+
 
 ### Technologies Used
 - **PHP**: Programming language for backend development.
@@ -17,4 +17,21 @@ This is a library API for managing and accessing library resouce and operations 
 - **Firebase JWT**: Library for JSON Web Token (JWT) authentication.
 - **Composer**: Dependency management for PHP projects.
 
----
+
+
+## Endpoints
+This section covers the URL, description, method, body, and the sample responses of the API when it succeeds or fails
+
+### User
+#### User Register
+
+- **Description**: Registers the user
+- **URL**: ==http://localhost:8080/library/public/user/register==
+- **Method**: ==POST==
+- **Body**:
+```json
+{
+  "username": "AlexandraAri",
+  "password": "password"
+}
+```
